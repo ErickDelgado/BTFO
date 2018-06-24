@@ -1,0 +1,19 @@
+{
+  "name": "btfo",
+  "version": "1.0.0",
+  "description": "Performance index which scrapes the historical data for the last four years of BTC, ETH, MANA, WAVES, BCC, Monero, Nuls, Polymath, NEO, and Binance Coin.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ErickDelgado/BTFO.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ErickDelgado/BTFO/issues"
+  },
+  "homepage": "https://github.com/ErickDelgado/BTFO#readme"
+}
