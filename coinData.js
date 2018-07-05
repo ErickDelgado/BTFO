@@ -1,4 +1,4 @@
-const request = require('request');
+let request = require('request');
 
 const re = /(se).*?(,")/g;
 let store = {};
@@ -11,7 +11,6 @@ request('https://min-api.cryptocompare.com/data/histoday?fsym=BTC&tsym=USD&allDa
   store.BTC = data;
 });
 
-//January 1st
 request('https://min-api.cryptocompare.com/data/histoday?fsym=ETH&tsym=USD&allData=true&aggregate=3&e=CCCAGG', function (error, response, body) {
 let parse = JSON.parse(response.body);
 let data = [];
