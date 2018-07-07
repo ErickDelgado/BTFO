@@ -24,8 +24,4 @@ request('https://www.bitmex.com/api/v1/orderBook/L2?symbol=XBT&depth=0', functio
       buy.price.push(parse[i].price);
     }
   }
-book.BTC.sell = sell;
-book.BTC.buy = buy;
-console.log(book.BTC.sell);
-
 });
