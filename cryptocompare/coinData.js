@@ -1,80 +1,67 @@
-const request = require('request');
-const fs = require('fs');
-const writeFile = (fileName, file) => {
-  return fs.writeFile(fileName, file, 'utf8', function (err) {
-      if (err) {
-          console.log("An error occured while writing JSON Object to File.");
-          return console.log(err);
-      }
-      console.log("JSON file has been saved.");
-  });
-}
-
-request('https://min-api.cryptocompare.com/data/histoday?fsym=BTC&tsym=USD&allData=true&aggregate=3&e=CCCAGG', function (error, response, body) {
-  let parse = JSON.parse(response.body);
-  let store = {};
-  let data = [];
-  for(i=0; i<parse.Data.length; i++) {
-    data.push(parse.Data[i].close);
+(async() => {
+  const request = require('request');
+  const fs = require('fs');
+  const writeFile = (fileName, file) => {
+    return fs.writeFile(fileName, file, 'utf8', function (err) {
+        if (err) {
+            console.log("An error occured while writing JSON Object to File.");
+            return console.log(err);
+        }
+        console.log("JSON file has been saved.");
+    });
   };
-  store.BTC = data;
-  const file = JSON.stringify(store);
-  writeFile('BTC.json', file);
-});
+  await (await request('https://min-api.cryptocompare.com/data/histoday?fsym=BTC&tsym=USD&allData=true&aggregate=3&e=CCCAGG', function (error, response, body) {
+    let parse = JSON.parse(response.body);
+    let store = {};
+    let data = [];
+    for(i=0; i<parse.Data.length; i++) {
+      data.push(parse.Data[i].close);
+    };
+    store.BTC = data;
+    const file = JSON.stringify(store);
+    console.log('BTC SAVED');
+    writeFile('BTC.json', file);
+  }));
+ await (await request('https://min-api.cryptocompare.com/data/histoday?fsym=ETH&tsym=USD&allData=true&aggregate=3&e=CCCAGG', function (error, response, body) {
+    let parse = JSON.parse(response.body);
+    let store = {};
+    let data = [];
+    for(i=0; i<parse.Data.length; i++) {
+      data.push(parse.Data[i].close);
+    };
+    store.ETH = data;
+    const file = JSON.stringify(store);
+    console.log('ETH SAVED');
+    writeFile('ETH.json', file);
+ }));
+  await (await request('https://min-api.cryptocompare.com/data/histoday?fsym=MANA&tsym=USD&allData=true&aggregate=3&e=CCCAGG', function (error, response, body) {
+    let parse = JSON.parse(response.body);
+    let store = {};
+    let data = [];
+    for(i=0; i<parse.Data.length; i++) {
+      data.push(parse.Data[i].close);
+    };
+    store.MANA = data;
+    const file = JSON.stringify(store);
+    console.log('MANA SAVED');
+    writeFile('MANA.json', file);
+  }));
+  await (await request('https://min-api.cryptocompare.com/data/histoday?fsym=XMR&tsym=USD&allData=true&aggregate=3&e=CCCAGG', function (error, response, body) {
+    let parse = JSON.parse(response.body);
+    let store = {};
+    let data = [];
+    for(i=0; i<parse.Data.length; i++) {
+      data.push(parse.Data[i].close);
+    };
+    store.XMR = data;
+    const file = JSON.stringify(store);
+    console.log('XMR SAVED');
+    writeFile('XMR.json', file);
+  }));
+})();
 
-// request('https://min-api.cryptocompare.com/data/histoday?fsym=ETH&tsym=USD&allData=true&aggregate=3&e=CCCAGG', function (error, response, body) {
-//   let parse = JSON.parse(response.body);
-//   let store = {};
-//   let data = [];
-//   for(i=0; i<parse.Data.length; i++) {
-//     data.push(parse.Data[i].close);
-//   };
-//   store.LTC = data;
-//   const file = JSON.stringify(store);
-//   fs.writeFile("LTC.json", file, 'utf8', function (err) {
-//       if (err) {
-//           console.log("An error occured while writing JSON Object to File.");
-//           return console.log(err);
-//       }
-//       console.log("JSON file has been saved.");
-//   });
-// });
-//
-// request('https://min-api.cryptocompare.com/data/histoday?fsym=MANA&tsym=USD&allData=true&aggregate=3&e=CCCAGG', function (error, response, body) {
-//   let parse = JSON.parse(response.body);
-//   let store = {};
-//   let data = [];
-//   for(i=0; i<parse.Data.length; i++) {
-//     data.push(parse.Data[i].close);
-//   };
-//   store.MANA = data;
-//   const file = JSON.stringify(store);
-//   fs.writeFile("MANA.json", file, 'utf8', function (err) {
-//       if (err) {
-//           console.log("An error occured while writing JSON Object to File.");
-//           return console.log(err);
-//       }
-//       console.log("JSON file has been saved.");
-//   });
-// });
-//
-// request('https://min-api.cryptocompare.com/data/histoday?fsym=XMR&tsym=USD&allData=true&aggregate=3&e=CCCAGG', function (error, response, body) {
-//   let parse = JSON.parse(response.body);
-//   let store = {};
-//   let data = [];
-//   for(i=0; i<parse.Data.length; i++) {
-//     data.push(parse.Data[i].close);
-//   };
-//   store.XMR = data;
-//   const file = JSON.stringify(store);
-//   fs.writeFile("XMR.json", file, 'utf8', function (err) {
-//       if (err) {
-//           console.log("An error occured while writing JSON Object to File.");
-//           return console.log(err);
-//       }
-//       console.log("JSON file has been saved.");
-//   });
-// });
+
+
 
 // request('https://min-api.cryptocompare.com/data/histoday?fsym=POLY&tsym=USD&allData=true&aggregate=3&e=CCCAGG', function (error, response, body) {
 //   let parse = JSON.parse(response.body);
