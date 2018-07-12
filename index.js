@@ -15,7 +15,8 @@ const xmr = require('./data/xmr.json');
 const xrp = require('./data/xrp.json');
 const zec = require('./data/zec.json');
 
-const data = Object.assign(btc, bch, bnb, dash, etc, eth, ltc, mana, neo, nuls, poly, waves, xlm, xmr, xrp, zec);
+const data = [];
+data.push(btc);
 console.log(data)
 
 module.exports = data;
